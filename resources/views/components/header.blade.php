@@ -47,12 +47,15 @@
                                 @endif
                             @else
                                 <li class="pl-4 pl-md-0 ml-0 ml-md-4 dropdown">
-                                    <a id="navbarDropdown" class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button"
-                                    aria-haspopup="true" aria-expanded="false" v-pre>
+                                    <a id="navbarDropdown" class="nav-link dropdown-toggle" data-toggle="dropdown"
+                                        href="#" role="button" aria-haspopup="true" aria-expanded="false" v-pre>
                                         {{ Auth::user()->name }}
                                     </a>
 
                                     <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+                                        <a class="dropdown-item" href="{{ url('bookmark') }}">
+                                            {{ __('Bookmark') }}
+                                        </a>
                                         <a class="dropdown-item" href="{{ route('logout') }}"
                                             onclick="event.preventDefault();
                                                           document.getElementById('logout-form').submit();">
@@ -60,7 +63,9 @@
                                         </a>
 
 
-                                        <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+
+                                        <form id="logout-form" action="{{ route('logout') }}" method="POST"
+                                            class="d-none">
                                             @csrf
                                         </form>
                                     </div>

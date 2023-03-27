@@ -19,14 +19,14 @@
                         <div class="product__item__pic set-bg" data-setbg="asset/upload/buku/{{ $item->image }}">
                             <div class="ep">? / ?</div>
                             <div class="comment"><i class="fa fa-comments"></i>0</div>
-                            <div class="view"><i class="fa fa-eye"></i>0</div>
+                            <div class="view"><i class="fa fa-eye"></i> 0</div>
                         </div>
                         <div class="product__item__text">
                             <ul>
                                 <li>{{ $item->Status_manga }}</li>
                                 <li>{{ $item->Type }}</li>
                             </ul>
-                            <h5><a href="buku/{{ $item->slug }}">{{ $item->judul }}</a></h5>
+                            <h5><a href="buku/{{ $item->id }}">{{ $item->judul }}</a></h5>
                         </div>
                     </div>
                 </div>
@@ -53,7 +53,7 @@
                     <div class="product__item">
                         <div class="product__item__pic set-bg" data-setbg="asset/upload/buku/{{ $pop->image }}">
                             <div class="ep">? / ?</div>
-                            <div class="comment"><i class="fa fa-comments"></i>0</div>
+                            <div class="comment"><i class="fa fa-comments"></i> 0</div>
                             <div class="view"><i class="fa fa-eye"></i>{{$pop->Views}}</div>
                         </div>
                         <div class="product__item__text">
@@ -61,7 +61,7 @@
                                 <li>{{ $pop->Status_manga }}</li>
                                 <li>{{ $pop->Type }}</li>
                             </ul>
-                            <h5><a href="buku/{{ $pop->slug }}">{{ $pop->judul }}</a></h5>
+                            <h5><a href="buku/{{ $pop->id }}">{{ $pop->judul }}</a></h5>
                         </div>
                     </div>
                 </div>
@@ -95,7 +95,7 @@
                                 <li>{{ $new->Status_manga }}</li>
                                 <li>{{ $new->Type }}</li>
                             </ul>
-                            <h5><a href="#">{{ $new->judul }}</a></h5>
+                            <h5><a href="buku/{{ $new->id }}">{{ $new->judul }}</a></h5>
                         </div>
                     </div>
                 </div>
@@ -129,7 +129,7 @@
                                 <li>{{ $korea->Status_manga }}</li>
                                 <li>{{ $korea->Type }}</li>
                             </ul>
-                            <h5><a href="#">{{ $korea->judul }}</a></h5>
+                            <h5><a href="buku/{{ $korea->id }}">{{ $korea->judul }}</a></h5>
                         </div>
                     </div>
                 </div>

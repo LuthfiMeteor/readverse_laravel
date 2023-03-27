@@ -22,6 +22,7 @@ use App\Http\Controllers\frontend\FrontController;
 | be assigned to the "web" middleware group. Make something great!
 |
 */
+
 Auth::routes();
 // GOOGLE
 route::get('auth/google', [GoogleController::class, 'RedirectToGoogle'])->name('Google');
@@ -36,12 +37,11 @@ Route::get('login/twitter/callback', [TwitternController::class, 'handleTwitterC
 Route::get('/', [HomeController::class, 'index'])->name('/');
 
 // DETAIL BUKU
-route::get('buku/{buku_slug}', [FrontController::class, 'detailbuku']);
-// CHAPTER
-route::get('chapter',[ChapterController::class, 'index']);
+route::get('buku/{id}', [FrontController::class, 'detailbuku']);
+// FRONTEND
+route::get('bookmark', [FrontController::class, 'bookmark']);
 
 Route::middleware(['auth'])->group(function () {
-
 });
 
 
@@ -62,6 +62,8 @@ Route::middleware(['auth', 'jikaadmin'])->group(function () {
     Route::get('edit-buku/{id}', [BukuController::class, 'edit']);
     Route::put('edit-buku/proses/{id}', [BukuController::class, 'update']);
     Route::delete('hapus-buku/{id}', [BukuController::class, 'destroy']);
-    
+    // CHAPTER
+    route::get('chapter', [ChapterController::class, 'index']);
+    route::get('tambah-chapter', [ChapterController::class, 'tambah']);
+    route::post('masukan-chapter', [ChapterController::class, 'insert']);
 });
-

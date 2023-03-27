@@ -52,7 +52,7 @@
                                 </div>
                             </div>
                             <div class="anime__details__btn">
-                                <a href="#" class="follow-btn"><i class="fa fa-heart-o"></i> Follow</a>
+                                <a href="#" class="follow-btn"><i class="fa fa-heart-o"></i> Bookmark</a>
                                 <a href="#" class="watch-btn"><span>Read Now</span> <i
                                         class="fa fa-angle-right"></i></a>
                             </div>
@@ -66,9 +66,13 @@
                         <div class="section-title">
                             <h5>CHAPYER {{ $buku->judul }}</h5>
                         </div>
+
                         <ul class="list-group bg-dark">
-                            <li class="list-group-item ">An item</li>
+                            @foreach ($chapter as $chapters)
+                                <li class="list-group-item ">Chapter {{ $chapters->chapter }}</li>
+                                @endforeach
                         </ul>
+                        
                     </div>
                     <div class="anime__details__form">
                         <div class="section-title">

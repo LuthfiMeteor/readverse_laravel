@@ -16,13 +16,13 @@
     </tr>
   </thead>
   <tbody>
-    {{-- @foreach ($data as $buku)
+    @foreach ($data as $buku)
         
     <tr>
-      <th scope="row">{{ $buku->id }}</th>
-      <th>{{ $buku->kategori->nama }}</th>
-      <td>{{ $buku->judul }}</td>
-      <td><img src="asset/upload/buku/{{ $buku->image }}" alt="" width="70px"></td>
+      <th scope="row">{{ $buku->buku_id }}</th>
+      <th>{{ $buku->chapter }}</th>
+      <td>{{ $buku->judul->judul }}</td> 
+      <td><img src="{{ asset($buku->judul->judul) }}" alt=""></td>
       <td> <a href="edit-buku/{{ $buku->id }}" class="btn btn-info">Edit</a></td>
        <form action="hapus-buku/{{ $buku->id }}" method="post">
         @csrf
@@ -30,11 +30,11 @@
         <td class="text-center"><Input type="submit" value="Delete" class="btn btn-danger"></Input></td>
       </form>
     </tr>
-    @endforeach --}}
+    @endforeach
   </tbody>
 </table>
     <div class="d-grid">
-        <a href="/tambah-buku" class="btn btn-info">Tambah Produk</a>
+        <a href="/tambah-chapter" class="btn btn-info">Tambah Chapter</a>
     </div>
     </div>
         
