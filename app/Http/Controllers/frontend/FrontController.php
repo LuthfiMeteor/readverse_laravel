@@ -24,4 +24,19 @@ class FrontController extends Controller
     {
         return view('user.bookmark');
     }
+    public function search()
+    {
+        return view('user.search');
+    }
+    public function searchbuku(Request $req)
+    {
+        if($req->search)
+        {
+            $searchbuku = buku::where('judul', 'LIKE', '%'.$req->search.'%')->latest()->paginate(15);
+            return view('user.search', compact('searchbuku'));
+        }else
+        {
+            return redirect()->back()->with('status','Judul Tidak Ada');
+        }
+    }
 }

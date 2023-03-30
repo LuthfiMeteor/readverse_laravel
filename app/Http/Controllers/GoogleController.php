@@ -25,6 +25,7 @@ class GoogleController extends Controller
             {
                 Auth::login($finduser);
                 return redirect('/');
+
             }else{
                 
                 $UserBaru = User::create([

@@ -15,4 +15,10 @@ class buku extends Model
     {
         return $this->belongsTo(kategori::class, 'cate_id', 'id');
     }
+    public function bookmarkedByUser($id)
+    { 
+        return $this->bookmark()
+            ->where('user_id', $id)
+            ->exists();
+    }
 }

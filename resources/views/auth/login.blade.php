@@ -81,8 +81,12 @@
                         @endif
 
                         <div class="d-flex justify-content-center text-center mt-2 pt-1">
-                            <a href="auth/google" class="text-dark"><img src="img/google.png" alt="" style="width: 50px"></i></a>
-                             <a href="login/facebook" class="text-dark"><img src="img/Facebook_f_logo_(2019).svg.png" alt="" style="width: 50px"></i></a>
+                            <a href="auth/google" class="text-dark p-2"><img src="img/google.png" alt=""
+                                    style="width: 40px"></i></a>
+                            <a href="login/facebook" class="text-dark p-2"><img src="img/Facebook_f_logo_(2019).svg.png"
+                                    alt="" style="width: 40px"></i></a>
+                            <a href="auth/github" class="text-dark p-2"><img src="img/github-mark.png"
+                                    alt="" style="width: 40px"></i></a>
                         </div>
 
                     </div>

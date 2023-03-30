@@ -20,8 +20,6 @@
         a {
             text-decoration: none;
         }
-        
-        
     </style>
     <!-- Css Styles -->
     <link href="
@@ -36,6 +34,7 @@ https://cdn.jsdelivr.net/npm/@icon/elegant-icons@0.0.1-alpha.4/elegant-icons.min
     <link rel="stylesheet" href="{{ asset('css/owl.carousel.min.css') }}" type="text/css">
     <link rel="stylesheet" href="{{ asset('css/slicknav.min.css') }}" type="text/css">
     <link rel="stylesheet" href="{{ asset('css/style.css') }}" type="text/css">
+    <link rel="stylesheet" href="{{ asset('css/notif.css') }}">
 
     {{-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css"> --}}
     <script src="https://kit.fontawesome.com/0a687202e4.js" crossorigin="anonymous"></script>
@@ -70,7 +69,63 @@ https://cdn.jsdelivr.net/npm/@icon/elegant-icons@0.0.1-alpha.4/elegant-icons.min
     <script src="{{ asset('js/jquery.slicknav.js') }}"></script>
     <script src="{{ asset('js/owl.carousel.min.js') }}"></script>
     <script src="{{ asset('js/main.js') }}"></script>
-    <script src="https://code.jquery.com/jquery.js"></script>
+    <script src="{{ asset('js/notif.js') }}"></script>
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+    <script>
+        $(document).ready(function() {
+            $(".follow-btn").click(function(e) {
+                e.preventDefault();
+                var buku_id = $(this).closest('.anime__details__text').find('.buku_id').val();
+
+                $.ajaxSetup({
+                    headers: {
+                        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                    }
+                });
+                $.ajax({
+                    url: "/tambah-bookmark",        
+                    type: "POST",
+                    data: {
+                        'buku_id': buku_id,
+                    },
+                    success: function(response) {
+                        console.log(response);
+                    },
+                    success: function(response) {
+                        swal({
+                            title: "Berhasil",
+                            text: response.status,
+                            type: "success"
+                        }).then(function() {
+                            location.reload();
+                        });
+                    }
+                });
+
+            });
+
+        });
+        $('.hapus').click(function(e) {
+                e.preventDefault();
+
+                var buku_id = $(this).parent('.card-body').find(".buku_id").val();
+                $.ajaxSetup({
+                    headers: {
+                        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                    }
+                });
+                $.ajax({
+                    url: "/hapus-bookmark",
+                    type: "POST",
+                    data: {
+                        'buku_id': buku_id
+                    },
+                    success: function(response) {
+                        location.reload();
+                    }
+                });
+            });
+    </script>
 </body>
 
 </html>

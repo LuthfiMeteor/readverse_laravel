@@ -29,6 +29,7 @@
                                 <span>1.029 Votes</span>
                             </div>
                             <p class="text-break text-left">{{ $buku->deskripsi }}</p>
+                            <input type="hidden" name="buku_id" class="buku_id" value="{{ $buku->id }}">
                             <div class="anime__details__widget">
                                 <div class="row">
                                     <div class="col-lg-6 col-md-6">
@@ -52,7 +53,9 @@
                                 </div>
                             </div>
                             <div class="anime__details__btn">
-                                <a href="#" class="follow-btn"><i class="fa fa-heart-o"></i> Bookmark</a>
+
+                                <a href="#" id="bookmark" class="follow-btn">
+                                    <i class="fa-regular fa-bookmark fa-2xl" onclick="myFunction(this)"></i></a>
                                 <a href="#" class="watch-btn"><span>Read Now</span> <i
                                         class="fa fa-angle-right"></i></a>
                             </div>
@@ -70,9 +73,9 @@
                         <ul class="list-group bg-dark">
                             @foreach ($chapter as $chapters)
                                 <li class="list-group-item ">Chapter {{ $chapters->chapter }}</li>
-                                @endforeach
+                            @endforeach
                         </ul>
-                        
+
                     </div>
                     <div class="anime__details__form">
                         <div class="section-title">
@@ -104,4 +107,16 @@
     </section>
     <!-- Anime Section End -->
     @include('components.footer')
+@endsection
+@section('script')
+    <script>
+        var button = document.querySelector('#bookmark');
+        button.addEventListener('click', changeIcon);
+
+        function changeIcon() {
+            var icon = document.querySelector('#bookmark i');
+            icon.classList.remove('fa-regular');
+            icon.classList.add('fa-solid');
+        }
+    </script>
 @endsection

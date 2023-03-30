@@ -3,8 +3,10 @@
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\GitHubController;
 use App\Http\Controllers\GoogleController;
 use App\Http\Controllers\TwitterController;
+use App\Http\Controllers\BookmarkController;
 use App\Http\Controllers\FacebookController;
 use App\Http\Controllers\Admin\BukuController;
 use App\Http\Controllers\Admin\AdminController;
@@ -28,18 +30,35 @@ Auth::routes();
 route::get('auth/google', [GoogleController::class, 'RedirectToGoogle'])->name('Google');
 route::get('auth/google/callback', [GoogleController::class, 'GoogleCallback'])->name('GoogleCallback');
 // FACEBOOK
-Route::get('login/facebook', [FacebookController::class, 'redirectToFacebook'])->name('login.facebook');
-Route::get('login/facebook/callback', [FacebookController::class, 'handleFacebookCallback'])->name('login.facebook.callback');
+Route::get('login/facebook', [FacebookController::class, 'facebookRedirect'])->name('login.facebook');
+Route::get('auth/facebook/callback', [FacebookController::class, 'loginWithFacebook'])->name('login.facebook.callback');
 // TWITTER
 Route::get('login/twitter', [TwitterController::class, 'redirectToTwitter'])->name('login.twitter');
 Route::get('login/twitter/callback', [TwitternController::class, 'handleTwitterCallback']);
+// GITHUB
+Route::get('auth/github', [GitHubController::class, 'gitRedirect']);
+Route::get('auth/github/callback', [GitHubController::class, 'gitCallback']);
+
+
+// BOOKMARK
+route::get('bookmark', [BookmarkController::class, 'lihatbookmark']);
+route::post('/tambah-bookmark', [BookmarkController::class, 'tambahbookmark']);
+route::post('/hapus-bookmark', [BookmarkController::class, 'hapusbookmark']);
+
+
+// SEARCH
+route::get('search', [FrontController::class, 'search']);
+route::get('searchbuku', [FrontController::class, 'searchbuku']);
+
+
+
 
 Route::get('/', [HomeController::class, 'index'])->name('/');
 
 // DETAIL BUKU
 route::get('buku/{id}', [FrontController::class, 'detailbuku']);
 // FRONTEND
-route::get('bookmark', [FrontController::class, 'bookmark']);
+
 
 Route::middleware(['auth'])->group(function () {
 });

@@ -2,42 +2,44 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Validator;
-use Illuminate\Validation\Rule;
+use Exception;
 use App\Models\User;
+use Illuminate\Http\Request;
+use Illuminate\Validation\Rule;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
 use Laravel\Socialite\Facades\Socialite;
+use Illuminate\Support\Facades\Validator;
 
 class FacebookController extends Controller
 {
-    public function redirectToFacebook()
+    public function facebookRedirect()
     {
         return Socialite::driver('facebook')->redirect();
     }
-
-    public function handleFacebookCallback(Request $request)
+    public function loginWithFacebook()
     {
-        $user = Socialite::driver('facebook')->user();
+        try {
 
-        $validator = Validator::make($request->all(), [
-            'email' => ['required', 'email', Rule::unique('users')->where(function ($query) use ($user) {
-                return $query->where('email', $user->getEmail());
-            })],
-            'name' => 'required',
-        ]);
+            $user = Socialite::driver('facebook')->user();
+            $isUser = User::where('fb_id', $user->id)->first();
 
-        if ($validator->fails()) {
-            return redirect()->route('login')->withErrors($validator);
+            if ($isUser) {
+                Auth::login($isUser);
+                return redirect('/');
+            } else {
+                $createUser = User::create([
+                    'name' => $user->name,
+                    'email' => $user->email,
+                    'fb_id' => $user->id,
+                    'password' => Hash::make('Noval200512')
+                ]);
+
+                Auth::login($createUser);
+                return redirect('/dashboard');
+            }
+        } catch (Exception $exception) {
+            return redirect('/login')->with('status', 'Login Error Silahkan Logout Facebook Dahulu');
         }
-
-        $user = User::create([
-            'name' => $request->input('name'),
-            'email' => $request->input('email'),
-        ]);
-
-        Auth::login($user);
-
-        return redirect()->intended('/');
     }
 }
