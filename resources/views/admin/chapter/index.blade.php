@@ -23,8 +23,7 @@
       <th>{{ $buku->chapter }}</th>
       <td>{{ $buku->judul->judul }}</td> 
       <td><img src="{{ asset($buku->judul->judul) }}" alt=""></td>
-      <td> <a href="edit-buku/{{ $buku->id }}" class="btn btn-info">Edit</a></td>
-       <form action="hapus-buku/{{ $buku->id }}" method="post">
+       <form action="hapus-chapter/{{ $buku->id }}" method="post">
         @csrf
         @method('delete')
         <td class="text-center"><Input type="submit" value="Delete" class="btn btn-danger"></Input></td>

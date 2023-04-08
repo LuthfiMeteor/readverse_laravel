@@ -7,6 +7,7 @@ use App\Models\buku;
 use App\Models\chapter;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\File;
 
 class ChapterController extends Controller
 {
@@ -26,8 +27,15 @@ class ChapterController extends Controller
         $buku = new chapter();
         
         $tempat_chapter = $req->input('judul_buku');
-        Storage::makeDirectory($tempat_chapter);
+        $chapter = $req->input('chapter');
 
+        if (!file_exists($tempat_chapter)) {
+            Storage::makeDirectory($tempat_chapter);
+        }elseif(!file_exists($tempat_chapter.'/'.$chapter))
+        {
+            Storage::makeDirectory($tempat_chapter.'/'.$chapter);
+        }
+        
 
 
         $files = [];
@@ -53,5 +61,11 @@ class ChapterController extends Controller
         
         
         return redirect('dashboard')->with('status', 'Chapter Berhasil Ditambahkan');
+    }
+    public function destroy($id, Request $request)
+    {
+        $kate = chapter::find($id);
+        $kate->delete();
+        return redirect('dashboard')->with('status', 'produk Telah DIhapus');
     }
 }

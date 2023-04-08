@@ -14,12 +14,21 @@
                     </button>
 
                     <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                        <form action="{{ url('searchbuku') }}" method="GET" role="search" class="form-inline m-auto">
+                            <div class="input-group">
+                                <input class="form-control border-end-0 border rounded-pill" type="search"
+                                    placeholder="Search ..." id="example-search-input" name="search">
+                                <span class="input-group-append">
+                                    <button
+                                        class="btn btn-outline-secondary bg-white border-start-0 border rounded-pill ms-n3"
+                                        type="submit">
+                                        <i class="fa fa-search"></i>
+                                    </button>
+                                </span>
+                            </div>
+                        </form>
                         <ul class="navbar-nav ml-auto py-4 py-md-0">
-                            <form action="{{ url('searchbuku') }}"  method="GET" role="search" class="form-inline me-5 pe-5">
-                                <input class="form-control mr-sm-2" type="search" placeholder="Search"
-                                    aria-label="Search" name="search">
-                                <button class="btn btn-outline-secondary my-2 my-sm-0" type="submit">Search</button>
-                            </form>
+
                             <li class="nav-item pl-4 pl-md-0 ml-0 ml-md-4">
                                 <a class="nav-link" href="/">Home</a>
                             </li>

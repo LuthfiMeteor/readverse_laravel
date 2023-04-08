@@ -85,4 +85,5 @@ Route::middleware(['auth', 'jikaadmin'])->group(function () {
     route::get('chapter', [ChapterController::class, 'index']);
     route::get('tambah-chapter', [ChapterController::class, 'tambah']);
     route::post('masukan-chapter', [ChapterController::class, 'insert']);
+    Route::delete('hapus-chapter/{id}', [ChapterController::class, 'destroy']);
 });
