@@ -45,4 +45,9 @@ return [
         'client_secret' => env('GITHUB_SECRET'),
         'redirect' => env('GITHUB_CALLBACK'),
     ],
+    'twitter' => [
+        'client_id' => env('TWIT_ID'),
+        'client_secret' => env('TWIT_SECRET'),
+        'redirect' => env('TWIT_CALLBACK'),
+    ],
 ];

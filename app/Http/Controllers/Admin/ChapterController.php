@@ -15,6 +15,7 @@ class ChapterController extends Controller
     {
         $data = chapter::all();
         $buku = buku::all();
+        // dd($picture);
         return view('admin.chapter.index', compact('data'));
     }
     public function tambah()
@@ -25,26 +26,30 @@ class ChapterController extends Controller
     public function insert(Request $req)
     {
         $buku = new chapter();
-        
+
         $tempat_chapter = $req->input('judul_buku');
         $chapter = $req->input('chapter');
 
         if (!file_exists($tempat_chapter)) {
             Storage::makeDirectory($tempat_chapter);
-        }elseif(!file_exists($tempat_chapter.'/'.$chapter))
-        {
-            Storage::makeDirectory($tempat_chapter.'/'.$chapter);
+        } elseif (!file_exists($tempat_chapter . '/' . $chapter)) {
+            Storage::makeDirectory($tempat_chapter . '/' . $chapter);
         }
-        
+
 
 
         $files = [];
         if ($req->hasfile('image')) {
             foreach ($req->file('image') as $file) {
-                $name = time() . rand(1, 50) . '.' . $file->extension();
+                $name = $file->getClientOriginalName();
                 $tempat = $file->move(public_path($tempat_chapter), $name);
-                array_push($files, $name);
+                $files[] = $name;
             }
+            chapter::create([
+                'chapter' => $req->input('chapter'),
+                'buku_id' => $req->input('buku_id'),
+                'image' => json_encode($files),
+            ]);
         }
         // $files = $req->file('image');
         // $imageNames = [];
@@ -52,14 +57,9 @@ class ChapterController extends Controller
         //     $imageName = $file->move(public_path($tempat_chapter));
         //     array_push($imageNames, $imageName);
         // }
-        chapter::create([
-            'chapter' => $req->input('chapter'),
-            'buku_id' => $req->input('buku_id'),
-            'image' => json_encode($files)
-        ]);
 
-        
-        
+
+
         return redirect('dashboard')->with('status', 'Chapter Berhasil Ditambahkan');
     }
     public function destroy($id, Request $request)
@@ -67,5 +67,11 @@ class ChapterController extends Controller
         $kate = chapter::find($id);
         $kate->delete();
         return redirect('dashboard')->with('status', 'produk Telah DIhapus');
+    }
+    public function chapterlook($id)
+    {
+        $chapters = chapter::find($id);
+        $image = json_decode($chapters->image, true);
+        return view('frontend.buku.chapterlengkap', compact('chapters', 'image'));
     }
 }

@@ -72,7 +72,9 @@
 
                         <ul class="list-group bg-dark">
                             @foreach ($chapter as $chapters)
-                                <li class="list-group-item ">Chapter {{ $chapters->chapter }}</li>
+                                <a href="chapter/{{ $chapters->id }}">
+                                    <li class="list-group-item ">Chapter {{ $chapters->chapter }}</li>
+                                </a>
                             @endforeach
                         </ul>
 

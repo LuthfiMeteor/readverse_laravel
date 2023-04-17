@@ -2,11 +2,13 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Controllers\Controller;
-use Illuminate\Http\Request;
-use Laravel\Socialite\Facades\Socialite;
+use Exception;
 use App\Models\User;
+use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
+use Laravel\Socialite\Facades\Socialite;
 
 class TwitterController extends Controller
 {
@@ -14,31 +16,32 @@ class TwitterController extends Controller
     {
         return Socialite::driver('twitter')->redirect();
     }
-
-    /**
-     * Obtain the user information from Twitter.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function handleTwitterCallback()
     {
-        $twitterUser = Socialite::driver('twitter')->user();
+        try {
 
-        // Check if the user already exists in the database
-        $user = User::where('twitter_id', $twitterUser->getId())->first();
+            $user = Socialite::driver('twitter')->user();
 
-        if (!$user) {
-            // Create a new user in the database if the user does not exist
-            $user = User::create([
-                'name' => $twitterUser->getName(),
-                'email' => $twitterUser->getEmail(),
-                'twitter_id' => $twitterUser->getId(),
-            ]);
+            $finduser = User::where('twitter_id', $user->id)->first();
+
+            if ($finduser) {
+
+                Auth::login($finduser);
+                return redirect()->intended('/');
+            } else {
+                $newUser = User::updateOrCreate(['email' => $user->email], [
+                    'name' => $user->name,
+                    'email' => $user->name.'@gmail.com',
+                    'twitter_id' => $user->id,
+                    'password' => Hash::make('Noval200512'),
+                ]);
+
+                Auth::login($newUser);
+
+                return redirect()->intended('/');
+            }
+        } catch (Exception $e) {
+            return redirect('/login')->with('status', $e->getMessage());
         }
-
-        // Log in the user
-        Auth::login($user, true);
-
-        return redirect()->intended('/');
     }
 }

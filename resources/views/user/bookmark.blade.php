@@ -10,7 +10,7 @@
                 </div>
             </div>
         </div>
-        <div class="row mt-5">
+        <div class="row mt-1">
             @if (count($bookmark) === 0)
                 <p class="fs-1 text-white fw-bold position-absolute top-50 start-50 translate-middle">
                     Tidak Ada Buku Yang Di <i class="fa-regular fa-bookmark fa-2xl"></i>

@@ -17,7 +17,7 @@ class chapter extends Model
     {
         return $this->belongsTo(buku::class, 'buku_id', 'id');
     }
-    protected $casts = [
-        'image' => 'array',
-    ];
+    // protected $casts = [
+    //     'image' => 'array',
+    // ];
 }

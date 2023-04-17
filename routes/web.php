@@ -34,7 +34,7 @@ Route::get('login/facebook', [FacebookController::class, 'facebookRedirect'])->n
 Route::get('auth/facebook/callback', [FacebookController::class, 'loginWithFacebook'])->name('login.facebook.callback');
 // TWITTER
 Route::get('login/twitter', [TwitterController::class, 'redirectToTwitter'])->name('login.twitter');
-Route::get('login/twitter/callback', [TwitternController::class, 'handleTwitterCallback']);
+Route::get('auth/twitter/callback', [TwitterController::class, 'handleTwitterCallback']);
 // GITHUB
 Route::get('auth/github', [GitHubController::class, 'gitRedirect']);
 Route::get('auth/github/callback', [GitHubController::class, 'gitCallback']);
@@ -57,6 +57,9 @@ Route::get('/', [HomeController::class, 'index'])->name('/');
 
 // DETAIL BUKU
 route::get('buku/{id}', [FrontController::class, 'detailbuku']);
+
+// CHAPTER
+route::get('buku/chapter/{chapter}', [ChapterController::class, 'chapterlook']);
 // FRONTEND
 
 
