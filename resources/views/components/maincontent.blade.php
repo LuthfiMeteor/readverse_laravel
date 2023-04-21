@@ -14,19 +14,20 @@
         </div>
         <div class="row">
             @foreach ($buku as $item)
-                <div class="col-lg-4 col-md-6 col-sm-6">
-                    <div class="product__item">
+                <div class="col-lg-4 col-md-6 col-sm-6 ">
+                    <div class="product__item views_ajax">
                         <div class="product__item__pic set-bg" data-setbg="asset/upload/buku/{{ $item->image }}">
                             <div class="ep">? / ?</div>
                             <div class="comment"><i class="fa fa-comments"></i>0</div>
-                            <div class="view"><i class="fa fa-eye"></i> 0</div>
+                            <div class="view"><i class="fa fa-eye"></i> {{ $item->Views }}</div>
                         </div>
-                        <div class="product__item__text">
+                        <div class="product__item__text ">
                             <ul>
                                 <li>{{ $item->Status_manga }}</li>
                                 <li>{{ $item->Type }}</li>
                             </ul>
-                            <h5><a href="buku/{{ $item->id }}">{{ $item->judul }}</a></h5>
+                            <input type="hidden" name="id" class="view_id" value="{{ $item->id }}">
+                            <h5><a href="buku/{{ $item->id }}" class="views_controll">{{ $item->judul }}</a></h5>
                         </div>
                     </div>
                 </div>
@@ -54,14 +55,16 @@
                         <div class="product__item__pic set-bg" data-setbg="asset/upload/buku/{{ $pop->image }}">
                             <div class="ep">? / ?</div>
                             <div class="comment"><i class="fa fa-comments"></i> 0</div>
-                            <div class="view"><i class="fa fa-eye"></i>{{$pop->Views}}</div>
+                            <div class="view"><i class="fa fa-eye"></i>{{ $pop->Views }}</div>
                         </div>
                         <div class="product__item__text">
                             <ul>
                                 <li>{{ $pop->Status_manga }}</li>
                                 <li>{{ $pop->Type }}</li>
                             </ul>
-                            <h5><a href="buku/{{ $pop->id }}">{{ $pop->judul }}</a></h5>
+                            <input type="hidden" name="id" class="view-type" value="{{ $pop->id }}">
+                            <h5><a href="buku/{{ $pop->id }}" class="views_controll">{{ $pop->judul }}</a></h5>
+
                         </div>
                     </div>
                 </div>
@@ -85,6 +88,7 @@
             @foreach ($terbaru as $new)
                 <div class="col-lg-4 col-md-6 col-sm-6">
                     <div class="product__item">
+                        <input type="hidden" name="id" class="view-type" value="{{ $new->id }}">
                         <div class="product__item__pic set-bg" data-setbg="asset/upload/buku/{{ $new->image }}">
                             <div class="ep">? / ?</div>
                             <div class="comment"><i class="fa fa-comments"></i>0</div>
@@ -95,7 +99,9 @@
                                 <li>{{ $new->Status_manga }}</li>
                                 <li>{{ $new->Type }}</li>
                             </ul>
-                            <h5><a href="buku/{{ $new->id }}">{{ $new->judul }}</a></h5>
+
+
+                            <h5><a href="buku/{{ $new->id }}" class="views_controll">{{ $new->judul }}</a></h5>
                         </div>
                     </div>
                 </div>
@@ -129,7 +135,10 @@
                                 <li>{{ $korea->Status_manga }}</li>
                                 <li>{{ $korea->Type }}</li>
                             </ul>
-                            <h5><a href="buku/{{ $korea->id }}">{{ $korea->judul }}</a></h5>
+                            <input type="hidden" name="id" class="view-type" value="{{ $korea->id }}">
+
+                            <h5><a href="buku/{{ $korea->id }}" class="views_controll">{{ $korea->judul }}</a>
+                            </h5>
                         </div>
                     </div>
                 </div>

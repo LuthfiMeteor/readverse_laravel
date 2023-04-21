@@ -66,7 +66,7 @@ class ChapterController extends Controller
     {
         $kate = chapter::find($id);
         $kate->delete();
-        return redirect('dashboard')->with('status', 'produk Telah DIhapus');
+        return redirect('dashboard')->with('status', 'Chapter Telah DIhapus');
     }
     public function chapterlook($id)
     {

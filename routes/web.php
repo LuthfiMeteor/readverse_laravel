@@ -58,6 +58,8 @@ Route::get('/', [HomeController::class, 'index'])->name('/');
 // DETAIL BUKU
 route::get('buku/{id}', [FrontController::class, 'detailbuku']);
 
+route::post('views', [FrontController::class, 'views']);
+
 // CHAPTER
 route::get('buku/chapter/{chapter}', [ChapterController::class, 'chapterlook']);
 // FRONTEND

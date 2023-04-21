@@ -9,6 +9,8 @@
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
     <title>{{ config('app.name', 'Laravel') }}</title>
+    <link rel="shortcut icon" href="{{ asset('img/Logo Black Rev.png') }}" type="image/x-icon">
+    <link rel="stylesheet" href="{{ asset('css/new.css') }}">
 
     {{-- Plugins --}}
     <!-- Fonts -->
@@ -19,6 +21,10 @@
     <style>
         a {
             text-decoration: none;
+        }
+
+        .container .row img .chapter-img {
+            width: 55%;
         }
     </style>
     <!-- Css Styles -->
@@ -84,7 +90,7 @@ https://cdn.jsdelivr.net/npm/@icon/elegant-icons@0.0.1-alpha.4/elegant-icons.min
                     }
                 });
                 $.ajax({
-                    url: "/tambah-bookmark",        
+                    url: "/tambah-bookmark",
                     type: "POST",
                     data: {
                         'buku_id': buku_id,
@@ -107,25 +113,41 @@ https://cdn.jsdelivr.net/npm/@icon/elegant-icons@0.0.1-alpha.4/elegant-icons.min
 
         });
         $('.hapus').click(function(e) {
-                e.preventDefault();
+            e.preventDefault();
 
-                var buku_id = $(this).parent('.card-body').find(".buku_id").val();
-                $.ajaxSetup({
-                    headers: {
-                        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-                    }
-                });
-                $.ajax({
-                    url: "/hapus-bookmark",
-                    type: "POST",
-                    data: {
-                        'buku_id': buku_id
-                    },
-                    success: function(response) {
-                        location.reload();
-                    }
-                });
+            var buku_id = $(this).parent('.card-body').find(".buku_id").val();
+            $.ajaxSetup({
+                headers: {
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                }
             });
+            $.ajax({
+                url: "/hapus-bookmark",
+                type: "POST",
+                data: {
+                    'buku_id': buku_id
+                },
+                success: function(response) {
+                    location.reload();
+                }
+            });
+            
+        });
+        // $('.views_controll').click(function(e) {
+        //     var id = $(this).closest('.views_ajax').find('.view_id').val();
+        //     $.ajaxSetup({
+        //         headers: {
+        //             'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+        //         }
+        //     });
+        //     $.ajax({
+        //         url: "/views",
+        //         type: "POST",
+        //         data: {
+        //             'id': id
+        //         }
+        //     });
+        // });
     </script>
 </body>
 

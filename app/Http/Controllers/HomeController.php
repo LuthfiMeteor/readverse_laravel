@@ -28,6 +28,7 @@ class HomeController extends Controller
         $terbaru = buku::orderBy('created_at', 'DESC')->take(6)->get();
         $manhwa = buku::where('Type', 'manhwa')->take(6)->get();
         $popular = buku::where('popular', '1')->take(6)->get();
-        return view('/welcome', compact('buku', 'terbaru', 'manhwa', 'popular'));
+        $top = buku::orderBy('Views', 'DESC')->take(6)->get();
+        return view('/welcome', compact('buku', 'terbaru', 'manhwa', 'popular','top'));
     }
 }

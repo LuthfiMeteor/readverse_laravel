@@ -67,7 +67,7 @@
                 <div class="col-lg-8 col-md-8">
                     <div class="anime__details__review">
                         <div class="section-title">
-                            <h5>CHAPYER {{ $buku->judul }}</h5>
+                            <h5>CHAPTER {{ $buku->judul }}</h5>
                         </div>
 
                         <ul class="list-group bg-dark">

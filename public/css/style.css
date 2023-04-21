@@ -2560,6 +2560,10 @@ ol {
 	.hero {
 		overflow: hidden;
 	}
+	img .chapter-img
+	{
+		width: 45%;
+	}
 }
 
 @media only screen and (min-width: 1200px) {
@@ -2910,3 +2914,4 @@ ol {
 	color: red !important;
 	opacity: 1;
 }
+
