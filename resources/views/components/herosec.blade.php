@@ -5,8 +5,6 @@
             <div class="col-md-12">
                 <div class="trending__product">
                     <div class="row">
-                    </div>
-                    <div class="row">
                         <div class="col-lg-20 col-md-15 col-sm-12">
                             <div class="hero__slider owl-carousel">
                                 <div class="hero__items set-bg" data-setbg="img/hero/manwha1.webp">
@@ -54,9 +52,6 @@
                 </div>
             </div>
         </div>
-    </div>
-    </div>
-    </div>
     </div>
 </section>
 <!-- Hero Section End -->

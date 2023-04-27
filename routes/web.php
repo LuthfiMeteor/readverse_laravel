@@ -51,6 +51,13 @@ route::get('search', [FrontController::class, 'search']);
 route::get('searchbuku', [FrontController::class, 'searchbuku']);
 
 
+// BUKU
+route::get('manga/', [FrontController::class, 'manga']);
+route::get('novel/', [FrontController::class, 'novel']);
+route::get('manhwa/', [FrontController::class, 'manhwa']);
+route::get('all/', [FrontController::class, 'all']);
+
+
 
 
 Route::get('/', [HomeController::class, 'index'])->name('/');

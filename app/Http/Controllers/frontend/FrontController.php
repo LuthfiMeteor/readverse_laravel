@@ -20,7 +20,7 @@ class FrontController extends Controller
                     'Views' => DB::raw('Views+1'),
                 ]);
             $chapter = chapter::where('buku_id', $id)->get();
-            return view('frontend.buku.lihat', compact('buku', 'rekom', 'chapter', 'top'));
+            return view('frontend.buku.lihat', compact('buku', 'rekom', 'chapter'));
         } else {
             return redirect('/')->with('status', 'lINK Bermasalah');
         }
@@ -41,5 +41,26 @@ class FrontController extends Controller
         } else {
             return redirect()->back()->with('status', 'Judul Tidak Ada');
         }
+    }
+    public function manga()
+    {
+        $manga = buku::where('Type', 'manga')->get();
+        $tipe = buku::where('Type', 'manga')->first();
+        return view('frontend.buku.manga', compact('manga', 'tipe'));
+    }
+    public function novel()
+    {
+        $novel = buku::where('Type', 'novel')->get();
+        return view('frontend.buku.novel', compact('novel'));
+    }
+    public function manhwa()
+    {
+        $manhwa = buku::where('Type', 'manhwa')->get();
+        return view('frontend.buku.manhwa', compact('manhwa'));
+    }
+    public function all()
+    {
+        $all = buku::all();
+        return view('user.allkategori', compact('all'));
     }
 }

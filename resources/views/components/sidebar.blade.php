@@ -18,58 +18,21 @@
             <div class="section-title">
                 <h5>New Comment</h5>
             </div>
-            <div class="product__sidebar__comment__item">
-                <div class="product__sidebar__comment__item__pic">
-                    <img src="img/sidebar/comment-1.jpg" alt="">
+            @foreach ($manhwa as $item)
+                <div class="product__sidebar__comment__item">
+                    <div class="product__sidebar__comment__item__pic">
+                        <img src="{{ asset('asset/upload/buku/'.$item->image) }}" alt="">
+                    </div>
+                    <div class="product__sidebar__comment__item__text">
+                        <ul>
+                            <li>{{ $item->Status_manga }}</li>
+                            <li>{{ $item->Type }}</li>
+                        </ul>
+                        <h5><a href="{{ url('buku/'.$item->id) }}">{{ $item->judul }}</a></h5>
+                        <span><i class="fa fa-eye"></i> {{ $item->Views }}</span>
+                    </div>
                 </div>
-                <div class="product__sidebar__comment__item__text">
-                    <ul>
-                        <li>Active</li>
-                        <li></li>
-                    </ul>
-                    <h5><a href="#">The Seven Deadly Sins: Wrath of the Gods</a></h5>
-                    <span><i class="fa fa-eye"></i> 19.141 Reader</span>
-                </div>
-            </div>
-            <div class="product__sidebar__comment__item">
-                <div class="product__sidebar__comment__item__pic">
-                    <img src="img/sidebar/comment-2.jpg" alt="">
-                </div>
-                <div class="product__sidebar__comment__item__text">
-                    <ul>
-                        <li>Active</li>
-                        <li></li>
-                    </ul>
-                    <h5><a href="#">Shirogane Tamashii hen Kouhan sen</a></h5>
-                    <span><i class="fa fa-eye"></i> 19.141 Reader</span>
-                </div>
-            </div>
-            <div class="product__sidebar__comment__item">
-                <div class="product__sidebar__comment__item__pic">
-                    <img src="img/sidebar/comment-3.jpg" alt="">
-                </div>
-                <div class="product__sidebar__comment__item__text">
-                    <ul>
-                        <li>Active</li>
-                        <li></li>
-                    </ul>
-                    <h5><a href="#">Kizumonogatari III: Reiket su-hen</a></h5>
-                    <span><i class="fa fa-eye"></i> 19.141 Reader</span>
-                </div>
-            </div>
-            <div class="product__sidebar__comment__item">
-                <div class="product__sidebar__comment__item__pic">
-                    <img src="img/sidebar/comment-4.jpg" alt="">
-                </div>
-                <div class="product__sidebar__comment__item__text">
-                    <ul>
-                        <li>Active</li>
-                        <li></li>
-                    </ul>
-                    <h5><a href="#">Monogatari Series: Second Season</a></h5>
-                    <span><i class="fa fa-eye"></i> 19.141 Reader</span>
-                </div>
-            </div>
+            @endforeach
         </div>
     </div>
 </div>

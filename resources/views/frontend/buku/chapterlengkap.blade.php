@@ -26,16 +26,21 @@
                 </div>
             </div>
             <div class="row">
-                <div class="col-md-9 m-auto">
+                <div class="col-md-12 m-auto ms-2">
                     <div class="d-flex flex-column mt-3">
                         @foreach ($image as $item)
                             <img src="{{ asset($chapters->judul->judul . '/' . $item) }}" class="m-auto chapter-img"
-                                alt="" style="width: 55%">
+                                alt="" style="width: 50%">
                         @endforeach
                     </div>
                 </div>
             </div>
         </div>
+        <hr style="color: white">
+        <div class="row mt-2">
+            <div id="disqus_thread"></div>
+        </div> 
     </div>
+
     @include('components.footer')
 @endsection

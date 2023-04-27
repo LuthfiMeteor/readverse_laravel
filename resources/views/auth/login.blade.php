@@ -6,7 +6,7 @@
         <div class="row justify-content-center">
             <div class="col-md-4">
                 <div class="card">
-                    <div class="text-center"><img src="{{ asset('img/Logo Black Rev.png') }}" alt=""
+                    <div class="text-center card-header"><img src="{{ asset('img/Logo Black Rev.png') }}" alt=""
                             style="width: 120px">
                     </div>
 

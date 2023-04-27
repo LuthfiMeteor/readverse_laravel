@@ -79,14 +79,11 @@
                         </ul>
 
                     </div>
+                    <hr style="color: white">
                     <div class="anime__details__form">
                         <div class="section-title">
-                            <h5>Your Comment</h5>
+                            <div id="disqus_thread"></div>
                         </div>
-                        <form action="#">
-                            <textarea placeholder="Your Comment"></textarea>
-                            <button type="submit"><i class="fa fa-location-arrow"></i> Review</button>
-                        </form>
                     </div>
                 </div>
                 <div class="col-lg-4 col-md-4">

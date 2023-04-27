@@ -37,13 +37,13 @@
                                 <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button"
                                     aria-haspopup="true" aria-expanded="false">Book</a>
                                 <div class="dropdown-menu">
-                                    <a class="dropdown-item" href="#">Manga</a>
-                                    <a class="dropdown-item" href="#">Manwha</a>
-                                    <a class="dropdown-item" href="#">Novel</a>
+                                    <a class="dropdown-item" href="{{ url('manga/') }}">Manga</a>
+                                    <a class="dropdown-item" href="{{ url('manhwa/') }}">Manwha</a>
+                                    <a class="dropdown-item" href="{{ url('novel/') }}">Novel</a>
                                 </div>
                             </li>
                             <li class="nav-item pl-4 pl-md-0 ml-0 ml-md-4">
-                                <a class="nav-link" href="#">All Category</a>
+                                <a class="nav-link" href="{{ url('all/') }}">All Category</a>
                             </li>
                             <li class="nav-item pl-4 pl-md-0 ml-0 ml-md-4">
                                 <a class="nav-link" href="#">Contact</a>
